@@ -42,6 +42,7 @@ setup(
     long_description_content_type="text/markdown",
     name="tasyba",
     packages=find_packages(where="tasyba"),
+    package_dir={"": "tasyba"},
     python_requires=">=3.6",
     test_suite="tests",
     tests_require=[],
