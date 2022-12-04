@@ -12,8 +12,8 @@ from pathlib import Path  # TODO: drop when moving to frictionless
 
 # Import modules
 from .common import read_tabular, load_config
-from .render import render_database, load_template, build_html_table
 from .fl import describe_resource
+from .render import render_database, load_template, build_html_table
 
 
 def caller(filepath):
