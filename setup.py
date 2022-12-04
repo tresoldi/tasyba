@@ -16,7 +16,7 @@ LOCAL_PATH = Path(__file__).parent
 # Build (recursive) list of resource files
 # TODO: read from MANIFEST.in?
 resource_files = []
-for filename in glob.glob(str(Path("templates" / "*" / "*")), recursive=True):
+for filename in glob.glob(str(Path("templates") / "*" / "*"), recursive=True):
     resource_files.append(filename)
 
 # The text of the README file
