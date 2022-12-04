@@ -82,6 +82,11 @@ def caller(filepath):
 
 
 # Build the package namespace
-__all__ = ["read_tabular", 
-"run_makefile",
-"load_makefile", "load_template", "render_database", "caller"]
+__all__ = [
+    "read_tabular",
+    "run_makefile",
+    "load_makefile",
+    "load_template",
+    "render_database",
+    "caller",
+]

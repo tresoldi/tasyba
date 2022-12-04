@@ -5,4 +5,4 @@ steps:
       source: "countries.yaml"
   - add_resource:
       name: "cars"
-      source: "data/cars.csv"
+      source: "cars.csv"

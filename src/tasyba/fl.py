@@ -10,6 +10,7 @@ import logging
 # Import 3rd-party libraries
 import frictionless
 
+
 def describe_resource(
     filename: Union[Path, str], validate=True
 ) -> frictionless.Resource:

@@ -45,5 +45,3 @@ def read_tabular(filename: Union[Path, str]) -> List[Dict[str, str]]:
         data = [row for row in reader]
 
     return data
-
-

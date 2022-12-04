@@ -25,7 +25,7 @@ def run_makefile(config: Dict[str, Any]) -> None:
     """
 
     # Instantiate a frictionless package to hold the resources
-    package = Package(resources=[])
+    package = Package(resources=[], basepath="/home/tiagot/repos/tasyba/tests/data/")
 
     for entry in config["steps"]:
         # Obtain a tuple representation of the entry, from where we draw the command and
@@ -54,13 +54,13 @@ def run_makefile(config: Dict[str, Any]) -> None:
                     steps=[
                         steps.resource_add(
                             Resource(
-                            "/home/tiagot/repos/tasyba/tests/data/"+args["source"],
-                            #path="/home/tiagot/repos/tasyba/tests/data/",
-                                trusted=True,
-                            )#, base_path="/home/tiagot/repos/tasyba/tests/data/"
-
+                                "/home/tiagot/repos/tasyba/tests/data/"
+                                + args["source"],
+                                # path="/home/tiagot/repos/tasyba/tests/data/",
+                                #  trusted=True,
+                            )  # , base_path="/home/tiagot/repos/tasyba/tests/data/"
                         )
-                    ]
+                    ],
                 )
             else:
                 target = transform(

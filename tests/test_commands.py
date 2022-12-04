@@ -33,7 +33,8 @@ def test_describe_resource():
     expected.pop("path")
 
     # Compare the two dictionaries
-    #assert resource == expected
+    # assert resource == expected
+
 
 def test_script():
     """Test running a script."""
