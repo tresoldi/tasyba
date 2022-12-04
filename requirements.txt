@@ -1,3 +1,4 @@
 chardet
+frictionless
 jinja2
 pyyaml
