@@ -3,6 +3,7 @@ Module with functions to render database contents to HTML.
 """
 
 # Import Python standard libraries
+from typing import *
 from pathlib import Path
 import datetime
 import logging
@@ -33,22 +34,34 @@ def load_template_env(template_path: str) -> Environment:
     return template_env
 
 
-def build_html(template_env, replaces, tables, output_file, config):
+def build_html(template_env, replaces, tables, output_file, template=None):
     """
     Build and write an HTML file from template and replacements.
     """
 
     # Load proper template and apply replacements, also setting current date
     logging.info("Applying replacements to generate `%s`...", output_file)
-    if output_file == "index.html":
-        template = template_env.get_template("index.html")
-    elif output_file == "sql.html":
-        template = template_env.get_template("sql.html")
+    if template:
+        template = template_env.get_template(template)
     else:
-        template = template_env.get_template("datatable.html")
+        if output_file == "index.html":
+            template = template_env.get_template("index.html")
+        elif output_file == "sql.html":
+            template = template_env.get_template("sql.html")
+        else:
+            template = template_env.get_template("datatable.html")
+
+    # Build the object for table representation with data, names, and urls
+    output_tables = [
+        {
+            "name": table_name,
+            "url": "http://",  # TODO: fix
+        }
+        for table_name, table in tables.items()
+    ]
 
     source = template.render(
-        tables=tables,
+        tables=output_tables,
         file=output_file,
         current_time=datetime.datetime.now().ctime(),
         **replaces,
@@ -91,6 +104,42 @@ def build_tables(data, replaces, tables, template_env, config):
         build_html(template_env, table_replaces, tables, f"{table}.html", config)
 
 
+def build_html_table(table_name, tables, replaces, template_env, columns=None):
+    """
+    Build the HTML output for a single data table.
+    """
+
+    # Extract the data table we are rendering
+    table_data = tables[table_name]
+
+    # If `columns` is not provided, use all the columns in the first row in the
+    # order they appear.
+    if not columns:
+        columns = list(table_data[0].keys())
+
+    # Collect table data as rows and columns, as expected by the template.
+    # Note that this code already has a placeholder for links, but the value is
+    # always None, so no links are generated at the moment.
+    rows = []
+    for row in table_data:
+        subrow = [{"value": row[column], "url": None} for column in columns]
+        rows.append(subrow)
+
+    table_data = {"columns": [{"name": column} for column in columns], "rows": rows}
+
+    # Build a new replacement dictionary for the current table, setting additional
+    # values and making sure that the original dictionary is not modified.
+    table_replaces = replaces.copy()
+    table_replaces["datatable"] = table_data
+    build_html(
+        template_env,
+        table_replaces,
+        tables,
+        f"{table_name}.html",
+        template="datatable.html",
+    )
+
+
 def build_sql_page(data, replaces, template_env, config):
     # Compute inline data replacements
     inline_data = {}
@@ -119,20 +168,11 @@ def build_sql_page(data, replaces, template_env, config):
 
 def render_database(data, replaces, tables, config):
     """
-    Render the database to HTML.
+    Render the database to a website.
     """
 
-    # Set the template path to the default one, if no other is provided
-    # TODO: allow to specify a different template path
-    template_path = None
-    if not template_path:
-        template_path = Path(__file__).parent.parent.parent / "templates" / "default"
-
-    # Load Jinja HTML template environment
-    template_env = load_template_env(template_path)
-
     # Build and write index.html
-    build_html(template_env, replaces, tables, "index.html", config)
+    #    build_html(template_env, replaces, tables, "index.html", config)
 
     # Build CSS files from template
     build_css(template_env, replaces, config)
@@ -142,3 +182,13 @@ def render_database(data, replaces, tables, config):
 
     # Build SQL query page
     # build_sql_page(data, replaces, template_env, config)
+
+
+def load_template(config):
+    # Load Jinja2 template environment as specified in config
+    template_path = config.get("template_path")
+    if not template_path:
+        template_path = Path(__file__).parent.parent.parent / "templates" / "default"
+    template_env = load_template_env(template_path)
+
+    return template_env

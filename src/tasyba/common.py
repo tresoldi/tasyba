@@ -47,29 +47,25 @@ def read_tabular(filename: Union[Path, str]) -> List[Dict[str, str]]:
     return data
 
 
-def load_config(filename: Union[Path, str]):
+def load_config(filename: Union[Path, str]) -> Dict[str, Any]:
     """
-    Reads configuration and replacements from a YAML file.
+    Reads a database configuration from a YAML file.
+
+    Parameters
+    ----------
+    filename : Union[Path,str]
+        The path to the configuration YAML file to read.
+
+    Returns
+    -------
+    Dict[str,Any]
+        The contents of the configuration file as a dictionary.
     """
 
+    # Read file
     with open(filename, "r", encoding="utf-8") as handler:
         config = yaml.load(handler, Loader=yaml.FullLoader)
 
-    # TODO: validate config
+    # TODO: validate configuration
 
-    # Build replacement dictionary; which for future expansions it is
-    # preferable to keep separate from the actual configuration while
-    # using a single file not to scare potential users with too much
-    # structure to learn. Remember that, in order to make
-    # deployment easy, we are being quite strict here in terms of
-    # templates, etc.
-    replaces = {
-        "title": config["title"],
-        "description": config["description"],
-        "author": config["author"],
-        "favicon": config["favicon"],
-        "mainlink": config["mainlink"],  # TODO: should be derived from URL?
-        "citation": config["citation"],
-    }
-
-    return config, replaces
+    return config
