@@ -8,9 +8,16 @@ Requirements are listed in `requirements.txt`.
 # Import Python standard libraries
 from setuptools import setup, find_packages
 import pathlib
+import glob
 
 # The directory containing this file
 LOCAL_PATH = pathlib.Path(__file__).parent
+
+# Build (recursive) list of resource files
+# TODO: read from MANIFEST.in?
+resource_files = []
+for filename in glob.glob("templates/*", recursive=True):
+    resource_files.append(filename)
 
 # The text of the README file
 README_FILE = (LOCAL_PATH / "README.md").read_text(encoding="utf-8")
@@ -29,6 +36,7 @@ setup(
         "Programming Language :: Python :: 3",
         "Topic :: Software Development :: Libraries",
     ],
+    data_files=resource_files,
     description="A set of tools for managing and deploying tabular data",
     extras_require={
         "dev": ["black", "flake8", "twine", "wheel"],
