@@ -7,16 +7,16 @@ Requirements are listed in `requirements.txt`.
 
 # Import Python standard libraries
 from setuptools import setup, find_packages
-import pathlib
+from pathlib import Path
 import glob
 
 # The directory containing this file
-LOCAL_PATH = pathlib.Path(__file__).parent
+LOCAL_PATH = Path(__file__).parent
 
 # Build (recursive) list of resource files
 # TODO: read from MANIFEST.in?
 resource_files = []
-for filename in glob.glob(pathlib.Path("templates" / "*" / "*"), recursive=True):
+for filename in glob.glob(str(Path("templates" / "*" / "*")), recursive=True):
     resource_files.append(filename)
 
 # The text of the README file
