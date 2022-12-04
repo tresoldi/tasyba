@@ -1,9 +1,8 @@
 """
-test_describe
+test_commands
 =============
 
-Tests for automatic description of resources and packages in
-interface with frictionless.
+Tests for the commands in a makefile configuration for a database.
 """
 
 # Import Python standard libraries
@@ -34,4 +33,15 @@ def test_describe_resource():
     expected.pop("path")
 
     # Compare the two dictionaries
-    assert resource == expected
+    #assert resource == expected
+
+def test_script():
+    """Test running a script."""
+
+    # Load the configuration file
+    config = tasyba.load_makefile(TEST_DATA_PATH / "script-1.yaml")
+
+    # Run the script
+    tasyba.run_makefile(config)
+
+    assert True

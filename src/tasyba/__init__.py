@@ -11,16 +11,21 @@ __email__ = "tiago.tresoldi@lingfil.uu.se"
 from pathlib import Path  # TODO: drop when moving to frictionless
 
 # Import modules
-from .common import read_tabular, load_config
+from .common import read_tabular
 from .fl import describe_resource
 from .render import render_database, load_template, build_html_table
+from .script import load_makefile, run_makefile
 
 
 def caller(filepath):
+    # TODO: move to header when moving to its own module
+    from frictionless import Package
+
     # Read and parse configuration file
-    config = load_config(filepath)
+    config = load_makefile(filepath)
 
     # Iterate over the steps
+    package = Package()
     tables = {}
     for entry in config["steps"]:
         # Obtain a tuple representation of the entry, from where we draw the command and
@@ -28,7 +33,7 @@ def caller(filepath):
         # interface
         command, args = tuple(entry.items())[0]
 
-        if command == "describe":
+        if command == "describe_resource":
             # Describe a resource
             resource = describe_resource(args["source"])
 
@@ -37,7 +42,13 @@ def caller(filepath):
             if "write" in args:
                 resource.to_yaml(args["write"])
 
-        elif command == "load":
+        elif command == "add_resource":
+            # Add a resource to the package; if we point to a YAML file,
+            # we assume it is a frictionless resource description; otherwise,
+            # we assume it is a path to a raw data file (tabular, Excel,
+            # JSON, etc.), which must be loaded via a frictionless resource
+            # description
+
             # Load data
             table_name = args.get("name", Path(args["source"]).stem)
             tables[table_name] = read_tabular(args["source"])
@@ -71,4 +82,6 @@ def caller(filepath):
 
 
 # Build the package namespace
-__all__ = ["read_tabular", "load_config", "load_template", "render_database", "caller"]
+__all__ = ["read_tabular", 
+"run_makefile",
+"load_makefile", "load_template", "render_database", "caller"]

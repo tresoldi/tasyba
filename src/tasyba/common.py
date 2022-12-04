@@ -47,25 +47,3 @@ def read_tabular(filename: Union[Path, str]) -> List[Dict[str, str]]:
     return data
 
 
-def load_config(filename: Union[Path, str]) -> Dict[str, Any]:
-    """
-    Reads a database configuration from a YAML file.
-
-    Parameters
-    ----------
-    filename : Union[Path,str]
-        The path to the configuration YAML file to read.
-
-    Returns
-    -------
-    Dict[str,Any]
-        The contents of the configuration file as a dictionary.
-    """
-
-    # Read file
-    with open(filename, "r", encoding="utf-8") as handler:
-        config = yaml.load(handler, Loader=yaml.FullLoader)
-
-    # TODO: validate configuration
-
-    return config

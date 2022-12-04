@@ -5,13 +5,11 @@ Module with functions for interfacing with the frictionless framework.
 # Import Python standard libraries
 from pathlib import Path
 from typing import *
+import logging
 
 # Import 3rd-party libraries
 import frictionless
 
-# TODO: implement a fallback with our own implementation, with
-#       extremely simple descriptions (mostly the list of columns)
-#       but able to handle most files.
 def describe_resource(
     filename: Union[Path, str], validate=True
 ) -> frictionless.Resource:
@@ -35,7 +33,7 @@ def describe_resource(
         # Validate the resource
         report = frictionless.validate(filename)
         if not report["valid"]:
-            print(report.to_summary())  # TODO: to logging
+            logging.error(report.to_summary())
             raise ValueError(
                 "Resource is not valid, please see validation report above."
             )

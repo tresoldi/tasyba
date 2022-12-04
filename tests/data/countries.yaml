@@ -1,4 +1,4 @@
-path: data/countries.csv
+path: countries.csv
 name: countries
 profile: tabular-data-resource
 scheme: file

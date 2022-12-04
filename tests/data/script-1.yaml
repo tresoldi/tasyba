@@ -1,0 +1,8 @@
+---
+steps:
+  - add_resource:
+      name: "countries"
+      source: "countries.yaml"
+  - add_resource:
+      name: "cars"
+      source: "data/cars.csv"
