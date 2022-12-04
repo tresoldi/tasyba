@@ -68,7 +68,7 @@ def render_database(data, replaces, tables, config):
     # TODO: allow to specify a different template path
     template_path = None
     if not template_path:
-        template_path = Path(__file__).parent / "templates"
+        template_path = Path(__file__).parent / "template" / "default"
 
     # Load Jinja HTML template environment
     template_env = load_template_env(template_path)
