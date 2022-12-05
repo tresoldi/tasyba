@@ -33,7 +33,7 @@ def test_describe_resource():
     expected.pop("path")
 
     # Compare the two dictionaries
-    # assert resource == expected
+    assert resource == expected
 
 
 def test_script():
@@ -43,6 +43,6 @@ def test_script():
     config = tasyba.load_makefile(TEST_DATA_PATH / "script-1.yaml")
 
     # Run the script
-    tasyba.run_makefile(config)
+    package = tasyba.run_makefile(config, TEST_DATA_PATH)
 
     assert True

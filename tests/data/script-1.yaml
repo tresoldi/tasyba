@@ -6,3 +6,7 @@ steps:
   - add_resource:
       name: "cars"
       source: "cars.csv"
+  - remove_resource:
+      name: "cars"
+  - table_print:
+      name: "countries"

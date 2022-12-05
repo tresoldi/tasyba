@@ -14,18 +14,29 @@ import yaml
 from tasyba.fl import describe_resource
 
 
-def run_makefile(config: Dict[str, Any]) -> None:
+def run_makefile(config: Dict[str, Any], basepath: Union[Path, str]) -> Package:
     """
     Runs a database configuration script.
 
     Parameters
     ----------
     config : Dict[str,Any]
-        The configuration script to run.
+        The contents of the configuration file as a dictionary.
+    basepath : Union[Path,str]
+        The base path to use for relative paths in the configuration file.
+
+    Returns
+    -------
+    Package
+        The package containing the resources created by the script.
     """
 
+    # Have `basepath` as a Path object, to properly iterate with other resourcess
+    if isinstance(basepath, str):
+        basepath = Path(basepath)
+
     # Instantiate a frictionless package to hold the resources
-    package = Package(resources=[], basepath="/home/tiagot/repos/tasyba/tests/data/")
+    package = Package(resources=[], basepath=str(basepath))
 
     for entry in config["steps"]:
         # Obtain a tuple representation of the entry, from where we draw the command and
@@ -52,24 +63,27 @@ def run_makefile(config: Dict[str, Any]) -> None:
                 package = transform(
                     package,
                     steps=[
-                        steps.resource_add(
-                            Resource(
-                                "/home/tiagot/repos/tasyba/tests/data/"
-                                + args["source"],
-                                # path="/home/tiagot/repos/tasyba/tests/data/",
-                                #  trusted=True,
-                            )  # , base_path="/home/tiagot/repos/tasyba/tests/data/"
-                        )
+                        steps.resource_add(Resource(str(basepath / args["source"])))
                     ],
                 )
             else:
-                target = transform(
+                package = transform(
                     package,
                     steps=[steps.resource_add(name=args["name"], path=args["source"])],
                 )
+        elif command == "remove_resource":
+            # Remove a resource from the package
+            package = transform(
+                package, steps=[steps.resource_remove(name=args["name"])]
+            )
+        elif command == "table_print":  # TODO: rename to resource print?
+            resource = package.get_resource(args["name"])
+            transform(resource, steps=[steps.table_print()])
         else:
             # Fallback
             raise ValueError(f"Unknown command: {command}")
+
+    return package
 
 
 def load_makefile(filename: Union[Path, str]) -> Dict[str, Any]:
