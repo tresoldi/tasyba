@@ -12,3 +12,15 @@ steps:
       name: "countries"
   - table_print:
       name: "countries"
+  - add_resource:
+      name: "transform-pivot"
+      source: "transform-pivot.csv"
+  - table_pivot:
+      name: "transform-pivot"
+      columns:
+        - "region"
+        - "gender"
+        - "units"
+      aggfun: sum
+  - table_print:
+      name: "transform-pivot"

@@ -94,6 +94,31 @@ def run_makefile(config: Dict[str, Any], basepath: Union[Path, str]) -> Package:
                     steps.resource_add(transposed),
                 ],
             )
+        elif command == "table_pivot":
+            # Get all columns in the pivoted table, building the
+            # arguments for the `table_pivot` step
+            columns = {
+                f"f{idx+1}": column for idx, column in enumerate(args["columns"])
+            }
+
+            resource = package.get_resource(args["name"])
+            pivoted = transform(
+                resource,
+                steps=[
+                    steps.table_normalize(),
+                    steps.table_pivot(aggfun=sum, **columns),
+                ],
+            )
+
+            # TODO: move to a single "replace"
+            package = transform(
+                package,
+                steps=[
+                    steps.resource_remove(name=args["name"]),
+                    steps.resource_add(pivoted),
+                ],
+            )
+
         else:
             # Fallback
             raise ValueError(f"Unknown command: {command}")
