@@ -79,6 +79,21 @@ def run_makefile(config: Dict[str, Any], basepath: Union[Path, str]) -> Package:
         elif command == "table_print":  # TODO: rename to resource print?
             resource = package.get_resource(args["name"])
             transform(resource, steps=[steps.table_print()])
+        elif command == "table_transpose":
+            # Transpose a table: obtain the transposed table and replace the original,
+            # by deleting the original and adding the transposed one
+            resource = package.get_resource(args["name"])
+            transposed = transform(
+                resource, steps=[steps.table_normalize(), steps.table_transpose()]
+            )
+
+            package = transform(
+                package,
+                steps=[
+                    steps.resource_remove(name=args["name"]),
+                    steps.resource_add(transposed),
+                ],
+            )
         else:
             # Fallback
             raise ValueError(f"Unknown command: {command}")
