@@ -1,0 +1,70 @@
+/* Navbar bg colour */
+#csvbase-nav {
+    background-color: #ffffff;
+}
+
+.table-card {
+    margin-bottom: 1em;
+}
+
+/* reducing bottom margin off the explain alert */
+#explain-alert {
+    text-align: center;
+    padding: 0;
+}
+
+#explain-alert>p {
+    padding: 0;
+    margin: 0;
+}
+
+
+.blog-post-description {
+    max-width: 30rem;
+    font-style: oblique;
+    margin: auto;
+    text-align: center;
+    margin-bottom: 1em;
+}
+
+.blog-post-draft {
+    font-weight: bold;
+    text-align: center;
+}
+
+.blog-post-blockquote {
+    margin: 1em;
+    border-left: 0.2em solid grey;
+    padding-left: 1em;
+    font-style: oblique;
+}
+
+.blog-rss {
+    font-style: oblique;
+}
+
+.csv-paste-textarea {
+    resize: both;
+}
+
+.table-topline {
+    font-size: large;
+}
+
+.table-caption {
+    font-style: oblique;
+}
+
+.blog-post img {
+    width: 100%;
+}
+
+.blog-post figure>img {
+    width: 80%;
+    display: block;
+    margin: auto;
+}
+
+.blog-post-2 pre {
+    white-space: pre-wrap;
+}

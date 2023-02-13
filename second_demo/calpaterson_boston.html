@@ -1,0 +1,1542 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="static/bootstrap.min.css"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3">
+  <link rel="stylesheet" href="static/site.css">
+  <link rel="stylesheet" href="static/codehilite.css">
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <link rel="icon" type="image/png" sizes="192x192" href="static/192x192.png">
+  <link rel="canonical" href="https://csvbase.com/calpaterson/boston">
+  <title>Arca Verborum</title>
+</head>
+
+<body>
+
+
+  <nav id="csvbase-nav" class="navbar navbar-expand-sm navbar-light">
+    <div class="container">
+      <a class="navbar-brand" href="https://csvbase.com/">
+        <img src="static/192x192.png" alt="tasyba" class="d-inline-block align-text" width="32"
+          height="32">
+        tasyba <em><small class="text-muted">(alpha)</small></em>
+      </a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-collapse">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbar-collapse">
+
+
+
+
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link " href="https://csvbase.com/new-table/paste">Paste/Upload</a>
+          </li>
+
+
+          <li class="nav-item">
+            <a class="nav-link " href="https://csvbase.com/blog">Blog</a>
+          </li>
+
+
+          <li class="nav-item">
+            <a class="nav-link " href="https://csvbase.com/about">About</a>
+          </li>
+        </ul>
+
+
+        <ul class="navbar-nav ms-auto">
+
+          <li class="nav-item">
+            <a class="nav-link" href="https://csvbase.com/sign-in">Sign in</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="https://csvbase.com/register">Register</a>
+          </li>
+
+        </ul>
+
+
+      </div>
+    </div>
+  </nav>
+
+
+
+  <div class="container">
+    <div id="explain-alert" class="alert alert-light" role="alert">
+
+      <p>csvbase is a website for <mark>hosting table data</mark>. Exporting this table to pandas is dead easy, run:</p>
+
+      <p><code>import pandas as pd; boston = pd.read_csv("https://csvbase.com/calpaterson/boston")</code></p>
+
+    </div>
+  </div>
+
+
+
+  <div class="container">
+    <h1 class="py-2"><a href="https://csvbase.com/calpaterson">calpaterson</a> / <a
+        href="https://csvbase.com/calpaterson/boston">boston</a>
+      <span style="font-size: 0.75rem" class="badge bg-danger rounded-pill">Unknown</span>
+
+
+    </h1>
+
+    <div class="row">
+      <div class="col-auto">
+        <p class="table-topline">
+
+          <span class="table-caption">A Dataset derived from information collected by the U.S. Census Service concerning
+            housing in the area of Boston Mass.</span> — about 506 rows
+
+        </p>
+      </div>
+      <div class="col-auto">
+
+
+      </div>
+    </div>
+
+
+
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Profile</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Contact</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">...</div>
+            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">...</div>
+            <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">...</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+
+
+    <div class="mb-3 d-none d-md-block">
+      <ul class="nav nav-tabs">
+        <li class="nav-item">
+          <a class="nav-link active" href="boston">View</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " href="readme">Readme</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " href="details">Schema/details</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " href="export">Export (XLSX/CSV)</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " href="docs">API (REST)</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" href="">API (GraphQL)</a>
+        </li>
+
+      </ul>
+    </div>
+
+  </div>
+
+
+
+  <div class="container">
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+
+
+            <th>Row ID</th>
+
+
+
+            <th>CRIM</th>
+
+
+
+            <th>ZN</th>
+
+
+
+            <th>INDUS</th>
+
+
+
+            <th>CHAS</th>
+
+
+
+            <th>NOX</th>
+
+
+
+            <th>RM</th>
+
+
+
+            <th>AGE</th>
+
+
+
+            <th>DIS</th>
+
+
+
+            <th>RAD</th>
+
+
+
+            <th>TAX</th>
+
+
+
+            <th>PTRATIO</th>
+
+
+
+            <th>B</th>
+
+
+
+            <th>LSTAT</th>
+
+
+
+            <th>MEDV</th>
+
+
+          </tr>
+        </thead>
+
+        <tbody>
+
+          <tr>
+
+
+            <td><a href="https://csvbase.com/calpaterson/boston/rows/1">
+
+                1
+
+              </a></td>
+
+
+
+            <td>
+
+              0.00632
+
+            </td>
+
+
+
+            <td>
+
+              18.0
+
+            </td>
+
+
+
+            <td>
+
+              2.31
+
+            </td>
+
+
+
+            <td>
+
+              0
+
+            </td>
+
+
+
+            <td>
+
+              0.538
+
+            </td>
+
+
+
+            <td>
+
+              6.575
+
+            </td>
+
+
+
+            <td>
+
+              65.2
+
+            </td>
+
+
+
+            <td>
+
+              4.09
+
+            </td>
+
+
+
+            <td>
+
+              1
+
+            </td>
+
+
+
+            <td>
+
+              296.0
+
+            </td>
+
+
+
+            <td>
+
+              15.3
+
+            </td>
+
+
+
+            <td>
+
+              396.9
+
+            </td>
+
+
+
+            <td>
+
+              4.98
+
+            </td>
+
+
+
+            <td>
+
+              24.0
+
+            </td>
+
+
+          </tr>
+
+          <tr>
+
+
+            <td><a href="https://csvbase.com/calpaterson/boston/rows/2">
+
+                2
+
+              </a></td>
+
+
+
+            <td>
+
+              0.02731
+
+            </td>
+
+
+
+            <td>
+
+              0.0
+
+            </td>
+
+
+
+            <td>
+
+              7.07
+
+            </td>
+
+
+
+            <td>
+
+              0
+
+            </td>
+
+
+
+            <td>
+
+              0.469
+
+            </td>
+
+
+
+            <td>
+
+              6.421
+
+            </td>
+
+
+
+            <td>
+
+              78.9
+
+            </td>
+
+
+
+            <td>
+
+              4.9671
+
+            </td>
+
+
+
+            <td>
+
+              2
+
+            </td>
+
+
+
+            <td>
+
+              242.0
+
+            </td>
+
+
+
+            <td>
+
+              17.8
+
+            </td>
+
+
+
+            <td>
+
+              396.9
+
+            </td>
+
+
+
+            <td>
+
+              9.14
+
+            </td>
+
+
+
+            <td>
+
+              21.6
+
+            </td>
+
+
+          </tr>
+
+          <tr>
+
+
+            <td><a href="https://csvbase.com/calpaterson/boston/rows/3">
+
+                3
+
+              </a></td>
+
+
+
+            <td>
+
+              0.02729
+
+            </td>
+
+
+
+            <td>
+
+              0.0
+
+            </td>
+
+
+
+            <td>
+
+              7.07
+
+            </td>
+
+
+
+            <td>
+
+              0
+
+            </td>
+
+
+
+            <td>
+
+              0.469
+
+            </td>
+
+
+
+            <td>
+
+              7.185
+
+            </td>
+
+
+
+            <td>
+
+              61.1
+
+            </td>
+
+
+
+            <td>
+
+              4.9671
+
+            </td>
+
+
+
+            <td>
+
+              2
+
+            </td>
+
+
+
+            <td>
+
+              242.0
+
+            </td>
+
+
+
+            <td>
+
+              17.8
+
+            </td>
+
+
+
+            <td>
+
+              392.83
+
+            </td>
+
+
+
+            <td>
+
+              4.03
+
+            </td>
+
+
+
+            <td>
+
+              34.7
+
+            </td>
+
+
+          </tr>
+
+          <tr>
+
+
+            <td><a href="https://csvbase.com/calpaterson/boston/rows/4">
+
+                4
+
+              </a></td>
+
+
+
+            <td>
+
+              0.03237
+
+            </td>
+
+
+
+            <td>
+
+              0.0
+
+            </td>
+
+
+
+            <td>
+
+              2.18
+
+            </td>
+
+
+
+            <td>
+
+              0
+
+            </td>
+
+
+
+            <td>
+
+              0.458
+
+            </td>
+
+
+
+            <td>
+
+              6.998
+
+            </td>
+
+
+
+            <td>
+
+              45.8
+
+            </td>
+
+
+
+            <td>
+
+              6.0622
+
+            </td>
+
+
+
+            <td>
+
+              3
+
+            </td>
+
+
+
+            <td>
+
+              222.0
+
+            </td>
+
+
+
+            <td>
+
+              18.7
+
+            </td>
+
+
+
+            <td>
+
+              394.63
+
+            </td>
+
+
+
+            <td>
+
+              2.94
+
+            </td>
+
+
+
+            <td>
+
+              33.4
+
+            </td>
+
+
+          </tr>
+
+          <tr>
+
+
+            <td><a href="https://csvbase.com/calpaterson/boston/rows/5">
+
+                5
+
+              </a></td>
+
+
+
+            <td>
+
+              0.06905
+
+            </td>
+
+
+
+            <td>
+
+              0.0
+
+            </td>
+
+
+
+            <td>
+
+              2.18
+
+            </td>
+
+
+
+            <td>
+
+              0
+
+            </td>
+
+
+
+            <td>
+
+              0.458
+
+            </td>
+
+
+
+            <td>
+
+              7.147
+
+            </td>
+
+
+
+            <td>
+
+              54.2
+
+            </td>
+
+
+
+            <td>
+
+              6.0622
+
+            </td>
+
+
+
+            <td>
+
+              3
+
+            </td>
+
+
+
+            <td>
+
+              222.0
+
+            </td>
+
+
+
+            <td>
+
+              18.7
+
+            </td>
+
+
+
+            <td>
+
+              396.9
+
+            </td>
+
+
+
+            <td>
+
+              5.33
+
+            </td>
+
+
+
+            <td>
+
+              36.2
+
+            </td>
+
+
+          </tr>
+
+          <tr>
+
+
+            <td><a href="https://csvbase.com/calpaterson/boston/rows/6">
+
+                6
+
+              </a></td>
+
+
+
+            <td>
+
+              0.02985
+
+            </td>
+
+
+
+            <td>
+
+              0.0
+
+            </td>
+
+
+
+            <td>
+
+              2.18
+
+            </td>
+
+
+
+            <td>
+
+              0
+
+            </td>
+
+
+
+            <td>
+
+              0.458
+
+            </td>
+
+
+
+            <td>
+
+              6.43
+
+            </td>
+
+
+
+            <td>
+
+              58.7
+
+            </td>
+
+
+
+            <td>
+
+              6.0622
+
+            </td>
+
+
+
+            <td>
+
+              3
+
+            </td>
+
+
+
+            <td>
+
+              222.0
+
+            </td>
+
+
+
+            <td>
+
+              18.7
+
+            </td>
+
+
+
+            <td>
+
+              394.12
+
+            </td>
+
+
+
+            <td>
+
+              5.21
+
+            </td>
+
+
+
+            <td>
+
+              28.7
+
+            </td>
+
+
+          </tr>
+
+          <tr>
+
+
+            <td><a href="https://csvbase.com/calpaterson/boston/rows/7">
+
+                7
+
+              </a></td>
+
+
+
+            <td>
+
+              0.08829
+
+            </td>
+
+
+
+            <td>
+
+              12.5
+
+            </td>
+
+
+
+            <td>
+
+              7.87
+
+            </td>
+
+
+
+            <td>
+
+              0
+
+            </td>
+
+
+
+            <td>
+
+              0.524
+
+            </td>
+
+
+
+            <td>
+
+              6.012
+
+            </td>
+
+
+
+            <td>
+
+              66.6
+
+            </td>
+
+
+
+            <td>
+
+              5.5605
+
+            </td>
+
+
+
+            <td>
+
+              5
+
+            </td>
+
+
+
+            <td>
+
+              311.0
+
+            </td>
+
+
+
+            <td>
+
+              15.2
+
+            </td>
+
+
+
+            <td>
+
+              395.6
+
+            </td>
+
+
+
+            <td>
+
+              12.43
+
+            </td>
+
+
+
+            <td>
+
+              22.9
+
+            </td>
+
+
+          </tr>
+
+          <tr>
+
+
+            <td><a href="https://csvbase.com/calpaterson/boston/rows/8">
+
+                8
+
+              </a></td>
+
+
+
+            <td>
+
+              0.14455
+
+            </td>
+
+
+
+            <td>
+
+              12.5
+
+            </td>
+
+
+
+            <td>
+
+              7.87
+
+            </td>
+
+
+
+            <td>
+
+              0
+
+            </td>
+
+
+
+            <td>
+
+              0.524
+
+            </td>
+
+
+
+            <td>
+
+              6.172
+
+            </td>
+
+
+
+            <td>
+
+              96.1
+
+            </td>
+
+
+
+            <td>
+
+              5.9505
+
+            </td>
+
+
+
+            <td>
+
+              5
+
+            </td>
+
+
+
+            <td>
+
+              311.0
+
+            </td>
+
+
+
+            <td>
+
+              15.2
+
+            </td>
+
+
+
+            <td>
+
+              396.9
+
+            </td>
+
+
+
+            <td>
+
+              19.15
+
+            </td>
+
+
+
+            <td>
+
+              27.1
+
+            </td>
+
+
+          </tr>
+
+          <tr>
+
+
+            <td><a href="https://csvbase.com/calpaterson/boston/rows/9">
+
+                9
+
+              </a></td>
+
+
+
+            <td>
+
+              0.21124
+
+            </td>
+
+
+
+            <td>
+
+              12.5
+
+            </td>
+
+
+
+            <td>
+
+              7.87
+
+            </td>
+
+
+
+            <td>
+
+              0
+
+            </td>
+
+
+
+            <td>
+
+              0.524
+
+            </td>
+
+
+
+            <td>
+
+              5.631
+
+            </td>
+
+
+
+            <td>
+
+              100.0
+
+            </td>
+
+
+
+            <td>
+
+              6.0821
+
+            </td>
+
+
+
+            <td>
+
+              5
+
+            </td>
+
+
+
+            <td>
+
+              311.0
+
+            </td>
+
+
+
+            <td>
+
+              15.2
+
+            </td>
+
+
+
+            <td>
+
+              386.63
+
+            </td>
+
+
+
+            <td>
+
+              29.93
+
+            </td>
+
+
+
+            <td>
+
+              16.5
+
+            </td>
+
+
+          </tr>
+
+          <tr>
+
+
+            <td><a href="https://csvbase.com/calpaterson/boston/rows/10">
+
+                10
+
+              </a></td>
+
+
+
+            <td>
+
+              0.17004
+
+            </td>
+
+
+
+            <td>
+
+              12.5
+
+            </td>
+
+
+
+            <td>
+
+              7.87
+
+            </td>
+
+
+
+            <td>
+
+              0
+
+            </td>
+
+
+
+            <td>
+
+              0.524
+
+            </td>
+
+
+
+            <td>
+
+              6.004
+
+            </td>
+
+
+
+            <td>
+
+              85.9
+
+            </td>
+
+
+
+            <td>
+
+              6.5921
+
+            </td>
+
+
+
+            <td>
+
+              5
+
+            </td>
+
+
+
+            <td>
+
+              311.0
+
+            </td>
+
+
+
+            <td>
+
+              15.2
+
+            </td>
+
+
+
+            <td>
+
+              386.71
+
+            </td>
+
+
+
+            <td>
+
+              17.1
+
+            </td>
+
+
+
+            <td>
+
+              18.9
+
+            </td>
+
+
+          </tr>
+
+        </tbody>
+      </table>
+    </div>
+
+    <nav>
+      <div class="row">
+        <div class="col-auto">
+
+        </div>
+        <div class="col-md-4 offset-md-4">
+          <ul class="pagination justify-content-center">
+
+            <li class="page-item disabled">
+              <a class="page-link" href="#" tabindex="-1">Previous page</a>
+            </li>
+
+
+            <li class="page-item active">
+
+              <a class="page-link" href="#">Rows 1 to 10 (of about 506)</a>
+
+            </li>
+
+
+            <li class="page-item">
+              <a class="page-link" href="https://csvbase.com/calpaterson/boston?op=gt&amp;n=10">Next page</a>
+            </li>
+
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+
+
+
+
+    <div class="container">
+      <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-5 border-top">
+        <a href="https://csvbase.com/"
+          class="offset-md-4 col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
+          <img src="calpaterson_boston_files/192x192.png" alt=" " class="d-inline-block align-text" width="32"
+            height="32">
+        </a>
+
+        <ul class="nav col-md-4 justify-content-end">
+          <li class="nav-item"><a href="https://github.com/calpaterson/csvbase" class="nav-link px-2 text-muted">Source
+              code</a></li>
+          <li class="nav-item"><a href="https://csvbase.com/static/privacy.txt" class="nav-link px-2 text-muted">Privacy
+              policy</a></li>
+          <li class="nav-item"><a href="https://csvbase.com/static/terms.txt" class="nav-link px-2 text-muted">Terms</a>
+          </li>
+        </ul>
+      </footer>
+    </div>
+
+    <script src="calpaterson_boston_files/bootstrap.bundle.js"
+      integrity="sha384-8fq7CZc5BnER+jVlJI2Jafpbn4A9320TKhNJfYP33nneHep7sUg/OD30x7fK09pS"></script>
+
+
+  </div>
+</body><grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration>
+
+</html>
